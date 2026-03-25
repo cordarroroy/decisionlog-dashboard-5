@@ -89,15 +89,8 @@ export default function RecentDecisions() {
                 </div>
               )}
 
-              {selectedDecision.alternatives && (
-                <div>
-                  <h3 className="font-semibold text-brand-800 mb-2">Alternatives Considered</h3>
-                  <p className="text-sm text-brand-600 whitespace-pre-wrap">{selectedDecision.alternatives}</p>
-                </div>
-              )}
-
               <div className="text-xs text-brand-400">
-                <p>Logged by: {selectedDecision.author_email ?? 'Unknown'}</p>
+                <p>Logged by: {selectedDecision.logged_by ?? 'Unknown'}</p>
               </div>
             </div>
           </div>
