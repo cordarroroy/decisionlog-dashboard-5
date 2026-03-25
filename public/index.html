@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecisionLog - Stop Losing Decisions in Slack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        body {font-family: 'Inter', sans-serif; background: #ffffff; color: #1f2937; line-height: 1.6;}
+        .container {max-width: 1200px; margin: 0 auto; padding: 0 20px;}
+        header {padding: 24px 0; border-bottom: 1px solid #f3f4f6;}
+        nav {display: flex; justify-content: space-between; align-items: center;}
+        .logo {font-size: 24px; font-weight: 800; color: #1f2937;}
+        .nav-links {display: flex; gap: 40px; list-style: none;}
+        .nav-links a {text-decoration: none; color: #6b7280; font-weight: 500; font-size: 14px; transition: color 0.3s;}
+        .nav-links a:hover {color: #1f2937;}
+        .hero {padding: 120px 0 80px; text-align: center;}
+        .hero h1 {font-size: 64px; font-weight: 800; line-height: 1.1; margin-bottom: 24px; letter-spacing: -1px; color: #1f2937;}
+        .hero p {font-size: 20px; color: #6b7280; margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto; font-weight: 400;}
+        .button-group {display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;}
+        .btn {padding: 16px 32px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 16px; border: none; cursor: pointer; transition: all 0.3s; display: inline-block;}
+        .btn-primary {background: #1f2937; color: white;}
+        .btn-primary:hover {background: #111827; transform: translateY(-2px);}
+        .btn-secondary {background: white; color: #1f2937; border: 2px solid #475569;}
+        .btn-secondary:hover {background: #f3f4f6; border-color: #1f2937;}
+        .problem {padding: 80px 0; background: #f9fafb; margin: 80px 0;}
+        .problem h2 {font-size: 48px; font-weight: 800; margin-bottom: 48px; letter-spacing: -0.5px;}
+        .problem-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;}
+        .problem-item {background: white; padding: 32px; border-radius: 4px; border: 1px solid #e5e7eb;}
+        .problem-item h3 {font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #1f2937;}
+        .problem-item p {font-size: 16px; color: #6b7280; line-height: 1.6;}
+        .features {padding: 80px 0;}
+        .features h2 {font-size: 48px; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.5px;}
+        .features-subtitle {font-size: 18px; color: #6b7280; margin-bottom: 60px; max-width: 500px;}
+        .bento {display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;}
+        .card {background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 4px; padding: 40px; transition: all 0.3s;}
+        .card:hover {border-color: #d1d5db; background: #f3f4f6;}
+        .card h3 {font-size: 20px; font-weight: 700; margin-bottom: 16px; color: #1f2937;}
+        .card p {font-size: 16px; color: #6b7280; line-height: 1.6;}
+        .card.large {grid-column: span 2;}
+        .pricing {padding: 80px 0; background: #f9fafb; margin: 80px 0;}
+        .pricing h2 {font-size: 48px; font-weight: 800; text-align: center; margin-bottom: 60px; letter-spacing: -0.5px;}
+        .pricing-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;}
+        .price-card {background: white; border: 1px solid #e5e7eb; border-radius: 4px; padding: 40px; text-align: center;}
+        .price-card.featured {border: 2px solid #475569; transform: scale(1.05);}
+        .price-card h3 {font-size: 24px; font-weight: 700; margin-bottom: 16px;}
+        .price {font-size: 56px; font-weight: 800; margin-bottom: 8px; letter-spacing: -1px;}
+        .period {font-size: 14px; color: #6b7280; margin-bottom: 32px;}
+        .features-list {list-style: none; margin-bottom: 32px; text-align: left;}
+        .features-list li {padding: 12px 0; border-bottom: 1px solid #f3f4f6; font-size: 14px; color: #6b7280;}
+        .features-list li:last-child {border-bottom: none;}
+        .cta-section {padding: 80px 0; text-align: center; background: #1f2937; color: white;}
+        .cta-section h2 {font-size: 48px; font-weight: 800; margin-bottom: 24px; letter-spacing: -0.5px;}
+        .cta-section p {font-size: 18px; margin-bottom: 40px; color: #d1d5db;}
+        .cta-section .btn {font-size: 18px; padding: 18px 40px;}
+        .cta-primary {background: white; color: #1f2937;}
+        .cta-primary:hover {background: #f3f4f6;}
+        footer {padding: 60px 0; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 14px;}
+        .footer-content {display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px;}
+        .footer-col h4 {color: #1f2937; margin-bottom: 16px; font-weight: 600;}
+        .footer-col ul {list-style: none;}
+        .footer-col ul li {margin-bottom: 12px;}
+        .footer-col a {color: #6b7280; text-decoration: none; transition: color 0.3s;}
+        .footer-col a:hover {color: #1f2937;}
+        .footer-bottom {text-align: center; padding-top: 40px; border-top: 1px solid #f3f4f6;}
+        @media (max-width: 768px) {
+            .nav-links {display: none;}
+            .hero h1 {font-size: 40px;}
+            .hero p {font-size: 18px;}
+            .button-group {flex-direction: column;}
+            .problem-grid {grid-template-columns: 1fr;}
+            .bento {grid-template-columns: 1fr;}
+            .card.large {grid-column: span 1;}
+            .pricing-grid {grid-template-columns: 1fr;}
+            .price-card.featured {transform: scale(1);}
+            .footer-content {grid-template-columns: repeat(2, 1fr);}
+        }
+        @media (max-width: 480px) {
+            .hero h1 {font-size: 32px;}
+            .hero p {font-size: 16px;}
+            .card {padding: 24px;}
+            .footer-content {grid-template-columns: 1fr;}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">DecisionLog</div>
+                <ul class="nav-links">
+                    <li><a href="#problem">Why</a></li>
+                    <li><a href="#features">How</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Stop losing decisions to Slack history</h1>
+            <p>Log. Search. Learn. Build better products together.</p>
+            <div class="button-group">
+                <a href="https://slack.com/apps/A0ALMK3KXEZ-decisionlog" class="btn btn-primary">Add to Slack for free</a>
+                <a href="/login" class="btn btn-secondary">Join Beta</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="problem" id="problem">
+        <div class="container">
+            <h2>The problem every dev team faces</h2>
+            <div class="problem-grid">
+                <div class="problem-item">
+                    <h3>Decisions vanish</h3>
+                    <p>Your team makes 50 decisions a day in Slack. 99% are lost within a week.</p>
+                </div>
+                <div class="problem-item">
+                    <h3>Onboarding takes months</h3>
+                    <p>New engineers ask "Why is it architected this way?" No one can find the answer.</p>
+                </div>
+                <div class="problem-item">
+                    <h3>Rework happens</h3>
+                    <p>You re-decide the same thing twice. Tribal knowledge kills efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2>How it works</h2>
+            <p class="features-subtitle">Decisions logged. Team aligned. Problems solved.</p>
+            
+            <div class="bento">
+                <div class="card large">
+                    <h3>Right-click to log</h3>
+                    <p>See a decision in Slack? Right-click → Log Decision. Capture title, context, and reasoning in 30 seconds. That's it.</p>
+                </div>
+                <div class="card">
+                    <h3>Search instantly</h3>
+                    <p>Full-text search across every decision. Find answers in seconds, not hours.</p>
+                </div>
+                <div class="card">
+                    <h3>Team transparency</h3>
+                    <p>See who decided what and when. Build institutional memory instead of tribal knowledge.</p>
+                </div>
+                <div class="card">
+                    <h3>Real-time sync</h3>
+                    <p>Decisions appear instantly. Everyone stays aligned.</p>
+                </div>
+                <div class="card">
+                    <h3>Faster onboarding</h3>
+                    <p>New engineers find answers immediately. No more "why is it like this?"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Simple pricing</h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Free</h3>
+                    <div class="price">$0</div>
+                    <div class="period">15 decisions/month</div>
+                    <ul class="features-list">
+                        <li>✓ Slack integration</li>
+                        <li>✓ Search decisions</li>
+                        <li>✓ 15 decisions/month</li>
+                        <li>✓ Team collaboration</li>
+                    </ul>
+                    <a href="/login" class="btn btn-secondary">Get Started</a>
+                </div>
+
+                <div class="price-card featured">
+                    <h3>Pro</h3>
+                    <div class="price">$49</div>
+                    <div class="period">/month</div>
+                    <ul class="features-list">
+                        <li>✓ Unlimited decisions</li>
+                        <li>✓ Advanced search</li>
+                        <li>✓ Team dashboard</li>
+                        <li>✓ Priority support</li>
+                    </ul>
+                    <a href="/login" class="btn btn-primary">Join Beta</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>Founding</h3>
+                    <div class="price">$29</div>
+                    <div class="period">/year</div>
+                    <ul class="features-list">
+                        <li>✓ Unlimited decisions</li>
+                        <li>✓ Full features</li>
+                        <li>✓ Forever pricing</li>
+                        <li>✓ Early supporter badge</li>
+                    </ul>
+                    <a href="/login" class="btn btn-secondary">Get Founding</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join the beta. Build better.</h2>
+            <p>Help us shape the future of decision logging. Early access now.</p>
+            <a href="/login" class="btn cta-primary">Start Free Today</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Slack</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DecisionLog. Stop losing decisions.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
