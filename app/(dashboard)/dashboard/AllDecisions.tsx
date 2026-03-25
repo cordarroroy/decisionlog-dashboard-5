@@ -1,13 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { useDecisions } from '@/hooks/useDecisions'
-import DecisionCard from '@/components/DecisionCard'
-import CardSkeleton from '@/components/skeletons/CardSkeleton'
+import SearchToolbar from '@/components/SearchToolbar'
+import DecisionTable from '@/components/DecisionTable'
 import EmptyState from '@/components/EmptyState'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import CategoryBadge from '@/components/CategoryBadge'
-import type { Decision } from '@/lib/types'
+import type { Decision, DecisionWithAuthor } from '@/lib/types'
 
 function formatDate(iso: string): string {
   return new Intl.DateTimeFormat('en-US', {
@@ -20,8 +20,12 @@ function formatDate(iso: string): string {
 }
 
 export default function AllDecisions() {
-  const { decisions, isLoading, error } = useDecisions()
-  const [selectedDecision, setSelectedDecision] = useState<Decision | null>(null)
+  const { decisions, isLoading, error, filters, setFilters } = useDecisions()
+  const [selectedDecision, setSelectedDecision] = useState<DecisionWithAuthor | null>(null)
+
+  const handleModalClose = useCallback(() => {
+    setSelectedDecision(null)
+  }, [])
 
   if (error) {
     return (
@@ -31,47 +35,72 @@ export default function AllDecisions() {
     )
   }
 
-  if (isLoading) {
-    return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {[0, 1, 2, 3, 4, 5].map((i) => <CardSkeleton key={i} />)}
-      </div>
-    )
-  }
-
-  if (decisions.length === 0) {
-    return (
-      <EmptyState
-        title="No decisions yet"
-        description="Log your first decision and it'll appear here. Keep your team's choices out of Slack threads."
-      />
-    )
-  }
-
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" aria-label="All decisions">
-        {decisions.map((decision, i) => (
-          <DecisionCard
-            key={decision.id}
-            decision={decision}
-            index={i}
-            onClick={() => setSelectedDecision(decision)}
-          />
-        ))}
+      {/* Search & Filters */}
+      <div className="mb-6">
+        <SearchToolbar
+          filters={filters}
+          setFilters={setFilters}
+          total={decisions.length}
+        />
       </div>
 
+      {/* Table View */}
+      {isLoading ? (
+        <div className="bg-surface-card rounded-xl border border-surface-border shadow-card overflow-hidden">
+          <table className="w-full">
+            <tbody>
+              {[0, 1, 2, 3].map((i) => (
+                <tr key={i} className="border-b border-surface-border">
+                  <td colSpan={4} className="px-4 py-3.5">
+                    <div className="h-6 bg-surface-muted rounded animate-pulse" />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : decisions.length === 0 ? (
+        <EmptyState
+          title="No decisions found"
+          description={
+            filters.search || filters.category !== 'all'
+              ? 'Try adjusting your search or filters'
+              : 'Log your first decision from Slack to get started'
+          }
+        />
+      ) : (
+        <div className="bg-surface-card rounded-xl border border-surface-border shadow-card overflow-hidden">
+          <DecisionTable
+            decisions={decisions}
+            onRowClick={(decision) => setSelectedDecision(decision)}
+          />
+        </div>
+      )}
+
+      {/* Modal - Click Outside to Close */}
       {selectedDecision && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-[85vh] overflow-y-auto">
+        <div
+          className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+          onClick={handleModalClose}
+        >
+          <div
+            className="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-[85vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="sticky top-0 bg-white border-b flex items-start justify-between p-8">
               <div className="flex-1 pr-4">
                 <CategoryBadge category={selectedDecision.category} size="md" />
-                <h2 className="text-3xl font-bold text-brand-800 mt-4 mb-2">{selectedDecision.title}</h2>
-                <p className="text-sm text-brand-400">{formatDate(selectedDecision.created_at)}</p>
+                <h2 className="text-3xl font-bold text-brand-800 mt-4 mb-2">
+                  {selectedDecision.title}
+                </h2>
+                <p className="text-sm text-brand-400">
+                  {formatDate(selectedDecision.created_at)}
+                </p>
               </div>
               <button
-                onClick={() => setSelectedDecision(null)}
+                onClick={handleModalClose}
                 className="p-2 hover:bg-gray-100 rounded transition flex-shrink-0"
                 aria-label="Close"
               >
@@ -82,25 +111,37 @@ export default function AllDecisions() {
             <div className="p-8 space-y-8">
               {selectedDecision.context && (
                 <div>
-                  <h3 className="text-lg font-semibold text-brand-800 mb-3">Context</h3>
-                  <p className="text-base text-brand-600 whitespace-pre-wrap leading-relaxed">{selectedDecision.context}</p>
+                  <h3 className="text-lg font-semibold text-brand-800 mb-3">
+                    Context
+                  </h3>
+                  <p className="text-base text-brand-600 whitespace-pre-wrap leading-relaxed">
+                    {selectedDecision.context}
+                  </p>
                 </div>
               )}
 
               <div className="border-t pt-6">
-                <h3 className="text-lg font-semibold text-brand-800 mb-3">Details</h3>
+                <h3 className="text-lg font-semibold text-brand-800 mb-3">
+                  Details
+                </h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
                     <p className="text-sm text-brand-400 mb-1">Category</p>
-                    <p className="text-base font-medium text-brand-800">{selectedDecision.category}</p>
+                    <p className="text-base font-medium text-brand-800">
+                      {selectedDecision.category}
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm text-brand-400 mb-1">Logged by</p>
-                    <p className="text-base font-medium text-brand-800">{selectedDecision.logged_by ?? 'Unknown'}</p>
+                    <p className="text-base font-medium text-brand-800">
+                      {selectedDecision.author_email ?? 'Unknown'}
+                    </p>
                   </div>
                   <div className="col-span-2">
                     <p className="text-sm text-brand-400 mb-1">Decision ID</p>
-                    <p className="text-xs font-mono text-brand-600">{selectedDecision.id}</p>
+                    <p className="text-xs font-mono text-brand-600">
+                      {selectedDecision.id}
+                    </p>
                   </div>
                 </div>
               </div>

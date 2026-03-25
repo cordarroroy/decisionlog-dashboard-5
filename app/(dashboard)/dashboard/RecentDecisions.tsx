@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { useDecisions } from '@/hooks/useDecisions'
 import DecisionCard from '@/components/DecisionCard'
 import CardSkeleton from '@/components/skeletons/CardSkeleton'
@@ -24,6 +24,10 @@ export default function RecentDecisions() {
   const [selectedDecision, setSelectedDecision] = useState<Decision | null>(null)
 
   const recent = decisions.slice(0, 3)
+
+  const handleModalClose = useCallback(() => {
+    setSelectedDecision(null)
+  }, [])
 
   if (error) {
     return (
@@ -64,16 +68,26 @@ export default function RecentDecisions() {
       </div>
 
       {selectedDecision && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-[85vh] overflow-y-auto">
+        <div
+          className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+          onClick={handleModalClose}
+        >
+          <div
+            className="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-[85vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="sticky top-0 bg-white border-b flex items-start justify-between p-8">
               <div className="flex-1 pr-4">
                 <CategoryBadge category={selectedDecision.category} size="md" />
-                <h2 className="text-3xl font-bold text-brand-800 mt-4 mb-2">{selectedDecision.title}</h2>
-                <p className="text-sm text-brand-400">{formatDate(selectedDecision.created_at)}</p>
+                <h2 className="text-3xl font-bold text-brand-800 mt-4 mb-2">
+                  {selectedDecision.title}
+                </h2>
+                <p className="text-sm text-brand-400">
+                  {formatDate(selectedDecision.created_at)}
+                </p>
               </div>
               <button
-                onClick={() => setSelectedDecision(null)}
+                onClick={handleModalClose}
                 className="p-2 hover:bg-gray-100 rounded transition flex-shrink-0"
                 aria-label="Close"
               >
@@ -84,25 +98,37 @@ export default function RecentDecisions() {
             <div className="p-8 space-y-8">
               {selectedDecision.context && (
                 <div>
-                  <h3 className="text-lg font-semibold text-brand-800 mb-3">Context</h3>
-                  <p className="text-base text-brand-600 whitespace-pre-wrap leading-relaxed">{selectedDecision.context}</p>
+                  <h3 className="text-lg font-semibold text-brand-800 mb-3">
+                    Context
+                  </h3>
+                  <p className="text-base text-brand-600 whitespace-pre-wrap leading-relaxed">
+                    {selectedDecision.context}
+                  </p>
                 </div>
               )}
 
               <div className="border-t pt-6">
-                <h3 className="text-lg font-semibold text-brand-800 mb-3">Details</h3>
+                <h3 className="text-lg font-semibold text-brand-800 mb-3">
+                  Details
+                </h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
                     <p className="text-sm text-brand-400 mb-1">Category</p>
-                    <p className="text-base font-medium text-brand-800">{selectedDecision.category}</p>
+                    <p className="text-base font-medium text-brand-800">
+                      {selectedDecision.category}
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm text-brand-400 mb-1">Logged by</p>
-                    <p className="text-base font-medium text-brand-800">{selectedDecision.logged_by ?? 'Unknown'}</p>
+                    <p className="text-base font-medium text-brand-800">
+                      {selectedDecision.logged_by ?? 'Unknown'}
+                    </p>
                   </div>
                   <div className="col-span-2">
                     <p className="text-sm text-brand-400 mb-1">Decision ID</p>
-                    <p className="text-xs font-mono text-brand-600">{selectedDecision.id}</p>
+                    <p className="text-xs font-mono text-brand-600">
+                      {selectedDecision.id}
+                    </p>
                   </div>
                 </div>
               </div>
