@@ -65,32 +65,46 @@ export default function RecentDecisions() {
 
       {selectedDecision && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-96 overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b flex items-start justify-between p-6">
-              <div>
+          <div className="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-[85vh] overflow-y-auto">
+            <div className="sticky top-0 bg-white border-b flex items-start justify-between p-8">
+              <div className="flex-1 pr-4">
                 <CategoryBadge category={selectedDecision.category} size="md" />
-                <h2 className="text-2xl font-bold text-brand-800 mt-3">{selectedDecision.title}</h2>
-                <p className="text-sm text-brand-400 mt-1">{formatDate(selectedDecision.created_at)}</p>
+                <h2 className="text-3xl font-bold text-brand-800 mt-4 mb-2">{selectedDecision.title}</h2>
+                <p className="text-sm text-brand-400">{formatDate(selectedDecision.created_at)}</p>
               </div>
               <button
                 onClick={() => setSelectedDecision(null)}
-                className="p-1 hover:bg-gray-100 rounded transition"
+                className="p-2 hover:bg-gray-100 rounded transition flex-shrink-0"
                 aria-label="Close"
               >
-                <XMarkIcon className="w-6 h-6 text-gray-600" />
+                <XMarkIcon className="w-8 h-8 text-gray-600" />
               </button>
             </div>
 
-            <div className="p-6 space-y-6">
+            <div className="p-8 space-y-8">
               {selectedDecision.context && (
                 <div>
-                  <h3 className="font-semibold text-brand-800 mb-2">Context</h3>
-                  <p className="text-sm text-brand-600 whitespace-pre-wrap">{selectedDecision.context}</p>
+                  <h3 className="text-lg font-semibold text-brand-800 mb-3">Context</h3>
+                  <p className="text-base text-brand-600 whitespace-pre-wrap leading-relaxed">{selectedDecision.context}</p>
                 </div>
               )}
 
-              <div className="text-xs text-brand-400">
-                <p>Logged by: {selectedDecision.logged_by ?? 'Unknown'}</p>
+              <div className="border-t pt-6">
+                <h3 className="text-lg font-semibold text-brand-800 mb-3">Details</h3>
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-sm text-brand-400 mb-1">Category</p>
+                    <p className="text-base font-medium text-brand-800">{selectedDecision.category}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-brand-400 mb-1">Logged by</p>
+                    <p className="text-base font-medium text-brand-800">{selectedDecision.logged_by ?? 'Unknown'}</p>
+                  </div>
+                  <div className="col-span-2">
+                    <p className="text-sm text-brand-400 mb-1">Decision ID</p>
+                    <p className="text-xs font-mono text-brand-600">{selectedDecision.id}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
