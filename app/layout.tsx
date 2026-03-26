@@ -1,34 +1,31 @@
-import type { Metadata, Viewport } from 'next'
-import type { ReactNode } from 'react'
-import './globals.css'
+import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title:       { default: 'DecisionLog', template: '%s — DecisionLog' },
-  description: 'Log and track team decisions so nothing gets lost in Slack threads.',
-  keywords:    ['decisions', 'team', 'slack', 'knowledge management'],
-  authors:     [{ name: 'DecisionLog' }],
-  robots:      { index: true, follow: true },
+  title: "DecisionLog — Stop losing decisions to Slack history",
+  description: "Decision logging + search for dev teams. Slack-native, zero friction.",
+  metadataBase: new URL("https://decisionslog.space"),
   openGraph: {
-    title:       'DecisionLog',
-    description: 'Log and track team decisions so nothing gets lost in Slack threads.',
-    type:        'website',
-    locale:      'en_US',
+    title: "DecisionLog — Stop losing decisions to Slack history",
+    description: "Decision logging + search for dev teams. Slack-native, zero friction.",
+    url: "https://decisionslog.space",
+    siteName: "DecisionLog",
+    type: "website",
   },
-}
+};
 
-export const viewport: Viewport = {
-  themeColor:   '#475569',
-  colorScheme:  'light',
-  width:        'device-width',
-  initialScale: 1,
-}
-
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-full">
-      <body className="h-full">
-        {children}
-      </body>
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Figtree:wght@300;400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased">{children}</body>
     </html>
-  )
+  );
 }
