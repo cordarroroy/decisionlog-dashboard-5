@@ -7,7 +7,7 @@ import DecisionTable from '@/components/DecisionTable'
 import EmptyState from '@/components/EmptyState'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import CategoryBadge from '@/components/CategoryBadge'
-import type { Decision, DecisionWithAuthor } from '@/lib/types'
+import type { DecisionWithAuthor } from '@/lib/types'
 
 function formatDate(iso: string): string {
   return new Intl.DateTimeFormat('en-US', {
@@ -49,17 +49,11 @@ export default function AllDecisions() {
       {/* Table View */}
       {isLoading ? (
         <div className="bg-surface-card rounded-xl border border-surface-border shadow-card overflow-hidden">
-          <table className="w-full">
-            <tbody>
-              {[0, 1, 2, 3].map((i) => (
-                <tr key={i} className="border-b border-surface-border">
-                  <td colSpan={4} className="px-4 py-3.5">
-                    <div className="h-6 bg-surface-muted rounded animate-pulse" />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="animate-pulse space-y-2 p-4">
+            {[0, 1, 2, 3].map((i) => (
+              <div key={i} className="h-12 bg-surface-muted rounded" />
+            ))}
+          </div>
         </div>
       ) : decisions.length === 0 ? (
         <EmptyState
