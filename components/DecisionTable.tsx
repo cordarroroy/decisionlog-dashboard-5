@@ -35,15 +35,17 @@ interface DecisionTableProps {
   onRowClick?: (decision: DecisionWithAuthor) => void
 }
 
+interface DecisionRowProps {
+  decision: DecisionWithAuthor
+  index: number
+  onRowClick?: (decision: DecisionWithAuthor) => void
+}
+
 const DecisionRow = React.memo(function DecisionRow({
   decision,
   index,
   onRowClick,
-}: {
-  decision: DecisionWithAuthor
-  index:    number
-  onRowClick?: (decision: DecisionWithAuthor) => void
-}) {
+}: DecisionRowProps) {
   return (
     <tr
       onClick={() => onRowClick?.(decision)}
