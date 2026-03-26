@@ -7,7 +7,7 @@ import CardSkeleton from '@/components/skeletons/CardSkeleton'
 import EmptyState from '@/components/EmptyState'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import CategoryBadge from '@/components/CategoryBadge'
-import type { Decision } from '@/lib/types'
+import type { DecisionWithAuthor } from '@/lib/types'
 
 function formatDate(iso: string): string {
   return new Intl.DateTimeFormat('en-US', {
@@ -21,12 +21,16 @@ function formatDate(iso: string): string {
 
 export default function RecentDecisions() {
   const { decisions, isLoading, error } = useDecisions()
-  const [selectedDecision, setSelectedDecision] = useState<Decision | null>(null)
+  const [selectedDecision, setSelectedDecision] = useState<DecisionWithAuthor | null>(null)
 
   const recent = decisions.slice(0, 3)
 
   const handleModalClose = useCallback(() => {
     setSelectedDecision(null)
+  }, [])
+
+  const handleCardClick = useCallback((decision: DecisionWithAuthor) => {
+    setSelectedDecision(decision)
   }, [])
 
   if (error) {
@@ -62,7 +66,7 @@ export default function RecentDecisions() {
             key={decision.id}
             decision={decision}
             index={i}
-            onClick={() => setSelectedDecision(decision)}
+            onClick={() => handleCardClick(decision)}
           />
         ))}
       </div>
@@ -121,7 +125,7 @@ export default function RecentDecisions() {
                   <div>
                     <p className="text-sm text-brand-400 mb-1">Logged by</p>
                     <p className="text-base font-medium text-brand-800">
-                      {selectedDecision.logged_by ?? 'Unknown'}
+                      {selectedDecision.author_email ?? 'Unknown'}
                     </p>
                   </div>
                   <div className="col-span-2">

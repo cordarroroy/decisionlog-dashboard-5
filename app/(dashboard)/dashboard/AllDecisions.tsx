@@ -27,6 +27,10 @@ export default function AllDecisions() {
     setSelectedDecision(null)
   }, [])
 
+  const handleRowClick = useCallback((decision: DecisionWithAuthor) => {
+    setSelectedDecision(decision)
+  }, [])
+
   if (error) {
     return (
       <div role="alert" className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
@@ -68,7 +72,7 @@ export default function AllDecisions() {
         <div className="bg-surface-card rounded-xl border border-surface-border shadow-card overflow-hidden">
           <DecisionTable
             decisions={decisions}
-            onRowClick={(decision) => setSelectedDecision(decision)}
+            onRowClick={handleRowClick}
           />
         </div>
       )}

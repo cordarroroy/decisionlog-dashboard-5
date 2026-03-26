@@ -186,7 +186,7 @@ export default function DecisionTable({
                 key={decision.id}
                 decision={decision}
                 index={i}
-                onRowClick={onRowClick}
+                {...(onRowClick && { onRowClick })}
               />
             ))}
           </tbody>
