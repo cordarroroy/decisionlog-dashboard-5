@@ -395,7 +395,7 @@ export default function HomePage() {
     </ul>
     <div class="nav-right">
       <a href="/signup" class="nav-signin">Sign up</a>
-      <a href="#" class="nav-cta">
+      <a href="https://slack.com/apps/A0ALMK3KXEZ-decisionlog" class="nav-cta">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Add to Slack
       </a>
