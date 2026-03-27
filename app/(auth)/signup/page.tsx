@@ -14,10 +14,28 @@ export default function SignupPage() {
   const [password,  setPassword]  = useState('')
   const [showPass,  setShowPass]  = useState(false)
   const [loading,   setLoading]   = useState(false)
+  const [oauthLoading, setOAuthLoading] = useState<string | null>(null)
   const [error,     setError]     = useState<string | null>(null)
   const [confirmed, setConfirmed] = useState(false)
 
   const passwordStrong = password.length >= 8
+
+  async function handleOAuth(provider: 'google' | 'slack') {
+    setOAuthLoading(provider)
+    setError(null)
+
+    const { error: authError } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: `${window.location.origin}/dashboard`,
+      },
+    })
+
+    if (authError) {
+      setError(authError.message)
+      setOAuthLoading(null)
+    }
+  }
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -70,6 +88,49 @@ export default function SignupPage() {
     <div className="bg-surface-card rounded-xl2 shadow-card border border-surface-border p-7">
       <h2 className="text-base font-semibold text-brand-800 mb-1">Create your account</h2>
       <p className="text-sm text-brand-500 mb-6">Free forever • 15 decisions/month</p>
+
+      {/* OAuth Buttons */}
+      <div className="space-y-2 mb-6">
+        <button
+          type="button"
+          onClick={() => handleOAuth('google')}
+          disabled={oauthLoading !== null}
+          className="
+            w-full px-3.5 py-2.5 rounded-lg
+            border border-surface-border bg-surface-bg
+            text-sm font-medium text-brand-800
+            hover:bg-surface-muted transition-colors duration-150
+            disabled:opacity-50 disabled:cursor-not-allowed
+            focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500
+          "
+        >
+          {oauthLoading === 'google' ? 'Signing in…' : 'Continue with Google'}
+        </button>
+        <button
+          type="button"
+          onClick={() => handleOAuth('slack')}
+          disabled={oauthLoading !== null}
+          className="
+            w-full px-3.5 py-2.5 rounded-lg
+            border border-surface-border bg-surface-bg
+            text-sm font-medium text-brand-800
+            hover:bg-surface-muted transition-colors duration-150
+            disabled:opacity-50 disabled:cursor-not-allowed
+            focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500
+          "
+        >
+          {oauthLoading === 'slack' ? 'Signing in…' : 'Continue with Slack'}
+        </button>
+      </div>
+
+      <div className="relative mb-6">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t border-surface-border" />
+        </div>
+        <div className="relative flex justify-center text-sm">
+          <span className="px-2 bg-surface-card text-brand-400">Or continue with email</span>
+        </div>
+      </div>
 
       <form onSubmit={(e) => void handleSubmit(e)} noValidate className="space-y-4">
         {/* Email */}
