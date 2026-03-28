@@ -108,7 +108,7 @@ const blogPostsData: Record<string, any> = {
 
       <p>If you're interested in making this a real practice on your team, <strong>DecisionLog</strong> is designed exactly for this. We built it for teams that want to capture decisions without adding overhead.</p>
 
-      <p>We're running a free beta. If you want to see how decision logging transforms your team, <a href="https://slack.com/apps/A0ALMK3KXEZ-decisionlog" style="color: var(--dark); font-weight: 600;">add DecisionLog to your Slack</a> and start logging decisions today.</p>
+      <p>We're running a free beta. If you want to see how decision logging transforms your team, <a href="https://slack.com/oauth_v2/authorize?client_id=10708640313204.10701649677509&scope=channels:history,chat:write,commands,im:write,users:read&redirect_uri=https://api.decisionslog.space" style="color: var(--dark); font-weight: 600;">add DecisionLog to your Slack</a> and start logging decisions today.</p>
     `,
   },
   'tribal-knowledge': {
@@ -500,7 +500,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </ul>
           <div className="nav-right">
             <a href="/signup" className="nav-signin">Sign up</a>
-            <a href="https://slack.com/apps/A0ALMK3KXEZ-decisionlog" className="nav-cta">
+            <a href="https://slack.com/oauth_v2/authorize?client_id=10708640313204.10701649677509&scope=channels:history,chat:write,commands,im:write,users:read&redirect_uri=https://api.decisionslog.space" className="nav-cta">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                 <rect x="3" y="3" width="7" height="7" />
                 <rect x="14" y="3" width="7" height="7" />
@@ -553,7 +553,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <div className="footer-links">
             <a href="/blog">Blog</a>
             <a href="/">Home</a>
-            <a href="https://slack.com/apps/A0ALMK3KXEZ-decisionlog">Install</a>
+            <a href="https://slack.com/oauth_v2/authorize?client_id=10708640313204.10701649677509&scope=channels:history,chat:write,commands,im:write,users:read&redirect_uri=https://api.decisionslog.space">Install</a>
           </div>
           <p className="footer-copy">© 2026 decisionlog</p>
         </footer>
