@@ -61,7 +61,7 @@ const blogPostsData: Record<string, any> = {
     date: 'Mar 25, 2026',
     readTime: '5 min read',
     category: 'Best Practices',
-    excerpt: "How to shift from \"we decided this\" to \"here's why we decided this.\"',
+    excerpt: "How to shift from we decided this to here's why we decided this. A step-by-step guide for teams.",
     body: `
       <p>A decision culture is an engineering team that treats decisions like code. Every decision has:</p>
       
