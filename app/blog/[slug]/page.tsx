@@ -4,6 +4,113 @@ import { notFound } from 'next/navigation';
 
 // Placeholder blog posts data
 const blogPostsData: Record<string, any> = {
+  'decision-logging-dev-teams': {
+    title: 'Decision Logging for Dev Teams: How to Stop Losing Knowledge When People Leave',
+    author: 'decisionlog',
+    date: 'Mar 28, 2026',
+    readTime: '7 min read',
+    category: 'Knowledge Management',
+    excerpt: "When a senior developer leaves, their decisions leave with them. Decision logging captures that knowledge before it walks out the door.",
+    body: `
+      <p>When a senior developer leaves your company, what walks out the door?</p>
+
+      <p>It's not just their code. It's not just their patterns. It's their decisions. Every architectural choice, every tradeoff, every "we chose X because of Y" lives in their head. And when they leave, it leaves with them.</p>
+
+      <p>This is the tribal knowledge problem. And it's costing your team weeks of lost productivity, failed onboarding cycles, and repeated wheels.</p>
+
+      <p>But there's a solution: decision logging.</p>
+
+      <h2>The Real Cost of Tribal Knowledge</h2>
+
+      <p>Most teams track features. They track bugs. They track velocity. But they don't track decisions.</p>
+
+      <p>Your codebase exists because of a thousand decisions. Why is your auth system built the way it is? Why did you choose Postgres over MongoDB? Why do you use this weird pattern for state management? Why did you refactor the entire API last quarter?</p>
+
+      <p>The answer to all of these questions is locked in someone's head.</p>
+
+      <h3>Slow Onboarding</h3>
+
+      <p>New hires don't struggle with code. They struggle with understanding why the code exists. They read the implementation and think "this is weird." They don't understand the context.</p>
+
+      <h3>Brutal Code Reviews</h3>
+
+      <p>Code reviews should be about catching bugs and improving design. Instead, they become about explaining the original intent.</p>
+
+      <h3>Lost Context Switching</h3>
+
+      <p>Developers spend mental energy switching between understanding what was built and understanding why it was built. Every switch is a context loss. Every context loss is time.</p>
+
+      <h3>Knowledge Exits as People Leave</h3>
+
+      <p>This is the killer. When people leave, the knowledge they held becomes tribal history. New people can't access it. They have to re-learn everything from first principles.</p>
+
+      <h2>Decision Logging: The Solution</h2>
+
+      <p>Decision logging solves this by capturing decisions at the moment they're made.</p>
+
+      <p>Instead of hoping people remember, you log it. Why did we make this choice? What were the tradeoffs? What were the alternatives? Why did we reject them?</p>
+
+      <p>This becomes institutional memory. It's not locked in one person's head. It's accessible to everyone.</p>
+
+      <h2>How Decision Logging Works</h2>
+
+      <p>At its core, decision logging is simple:</p>
+
+      <ul>
+        <li>A decision gets made (in a meeting, in a PR, in Slack, wherever)</li>
+        <li>Someone logs it: "We chose Postgres because we needed ACID compliance and complex queries"</li>
+        <li>It's documented: what was chosen, why it was chosen, what alternatives existed</li>
+        <li>It's accessible: new hires can read it, reviewers can reference it, the team has context</li>
+      </ul>
+
+      <h2>The Benefits: What Decision Logging Gives You</h2>
+
+      <h3>Faster Onboarding</h3>
+
+      <p>New hires don't have to reverse-engineer decisions. They can read them. "Why is our auth system built this way?" has an answer. Onboarding goes from weeks to days.</p>
+
+      <h3>Better Code Reviews</h3>
+
+      <p>Reviewers understand context. They know the original decisions that shaped the system. Code reviews become about quality, not about explaining history.</p>
+
+      <h3>Reduced Context Switching</h3>
+
+      <p>Developers spend less mental energy understanding the "why." They can focus on the "what" and "how." Productivity increases.</p>
+
+      <h3>Knowledge Persists</h3>
+
+      <p>When people leave, the knowledge stays. Your team has memory. New people inherit understanding, not confusion.</p>
+
+      <h3>Faster Decision Making</h3>
+
+      <p>When you log past decisions, you avoid repeating them. You avoid relitigating choices. You move faster because context is shared.</p>
+
+      <h2>Getting Started with Decision Logging</h2>
+
+      <p>You don't need a complicated system. Start simple:</p>
+
+      <ul>
+        <li>Pick a format (could be Markdown, could be a simple document, could be a tool)</li>
+        <li>Log decisions as they're made (link to the PR, the meeting notes, the Slack thread)</li>
+        <li>Make it searchable and accessible</li>
+        <li>Build it into your review process</li>
+      </ul>
+
+      <p>The key is consistency. Small, regular decisions logged are worth more than comprehensive documentation of old decisions.</p>
+
+      <h2>Why Decision Logging Matters for Your Team</h2>
+
+      <p>If you've felt the friction of onboarding, of code reviews that take forever because context is missing, of knowledge walking out the door, you've felt the cost of not logging decisions.</p>
+
+      <p>This isn't a "nice to have." It's a productivity multiplier. Teams with decision history move faster. They onboard better. They review faster. They stay stable through turnover.</p>
+
+      <h2>Try It Free</h2>
+
+      <p>If you're interested in making this a real practice on your team, <strong>DecisionLog</strong> is designed exactly for this. We built it for teams that want to capture decisions without adding overhead.</p>
+
+      <p>We're running a free beta. If you want to see how decision logging transforms your team, <a href="https://slack.com/apps/A0ALMK3KXEZ-decisionlog" style="color: var(--dark); font-weight: 600;">add DecisionLog to your Slack</a> and start logging decisions today.</p>
+    `,
+  },
   'tribal-knowledge': {
     title: 'The Cost of Tribal Knowledge',
     author: 'decisionlog',

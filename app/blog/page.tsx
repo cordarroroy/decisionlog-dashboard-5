@@ -4,6 +4,15 @@ import type { Metadata } from 'next';
 
 const blogPosts = [
   {
+    slug: 'decision-logging-dev-teams',
+    title: 'Decision Logging for Dev Teams: How to Stop Losing Knowledge When People Leave',
+    excerpt: "When a senior developer leaves, their decisions leave with them. Decision logging captures that knowledge before it walks out the door.",
+    category: 'Knowledge Management',
+    author: 'decisionlog',
+    date: 'Mar 28, 2026',
+    readTime: '7 min read',
+  },
+  {
     slug: 'tribal-knowledge',
     title: 'The Cost of Tribal Knowledge',
     excerpt: "Why dev teams lose $200k/year to decisions that disappear into Slack threads. When only the senior engineer knows why you chose async, you pay 20 hours per new hire.",

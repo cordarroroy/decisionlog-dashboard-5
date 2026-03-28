@@ -772,14 +772,14 @@ export default function HomePage() {
       <!-- Blog Grid -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
         <!-- Blog Card 1 -->
-        <a href="/blog/tribal-knowledge" style="text-decoration: none; color: inherit;">
+        <a href="/blog/decision-logging-dev-teams" style="text-decoration: none; color: inherit;">
           <div style="border: 1px solid var(--border); border-radius: 14px; padding: 28px; background: var(--white); transition: all 0.2s ease; cursor: pointer; height: 100%; display: flex; flex-direction: column;" onmouseover="this.style.boxShadow='0 8px 40px rgba(0,0,0,0.07)'" onmouseout="this.style.boxShadow='none'">
             <div style="margin-bottom: 16px;">
-              <span style="display: inline-block; font-size: 12.5px; font-weight: 500; color: var(--body); background: var(--light); padding: 5px 14px; border-radius: 50px;">Team Culture</span>
+              <span style="display: inline-block; font-size: 12.5px; font-weight: 500; color: var(--body); background: var(--light); padding: 5px 14px; border-radius: 50px;">Knowledge Management</span>
             </div>
-            <h3 style="font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: var(--dark); margin-bottom: 12px; line-height: 1.4;">The Cost of Tribal Knowledge</h3>
-            <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px; flex-grow: 1; line-height: 1.6;">Why dev teams lose $200k/year to decisions that disappear into Slack threads.</p>
-            <div style="font-size: 13px; color: var(--muted);">Mar 26, 2026 · 4 min read</div>
+            <h3 style="font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: var(--dark); margin-bottom: 12px; line-height: 1.4;">Decision Logging for Dev Teams</h3>
+            <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px; flex-grow: 1; line-height: 1.6;">When a senior developer leaves, their decisions leave with them. Here's the fix.</p>
+            <div style="font-size: 13px; color: var(--muted);">Mar 28, 2026 · 7 min read</div>
           </div>
         </a>
 
