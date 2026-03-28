@@ -395,7 +395,7 @@ export default function HomePage() {
     </ul>
     <div class="nav-right">
       <a href="/signup" class="nav-signin">Sign up</a>
-      <a href="https://slack.com/apps/A0ALMK3KXEZ-decisionlog" class="nav-cta">
+      <a href="https://slack.com/oauth_v2/authorize?client_id=10708640313204.10701649677509&scope=channels:history,chat:write,commands,im:write,users:read&redirect_uri=https://api.decisionslog.space" class="nav-cta">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Add to Slack
       </a>
@@ -415,7 +415,7 @@ export default function HomePage() {
     <p class="hero-sub">Right-click any Slack message. Log the decision. Find it years later. Zero context switching.</p>
 
     <div class="hero-btns">
-      <a href="https://slack.com/apps/A0ALMK3KXEZ-decisionlog" class="btn-black">
+      <a href="https://slack.com/oauth_v2/authorize?client_id=10708640313204.10701649677509&scope=channels:history,chat:write,commands,im:write,users:read&redirect_uri=https://api.decisionslog.space" class="btn-black">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Add to Slack — Free
       </a>
@@ -661,7 +661,7 @@ export default function HomePage() {
             <div class="bc-kicker">The Result</div>
             <h3 style="font-size:clamp(28px,3.5vw,44px);">Stop losing decisions<br>to Slack history.</h3>
             <p>Log them. Search them. Learn from them. Build better products together — without repeating the same arguments.</p>
-            <a href="https://slack.com/apps/A0ALMK3KXEZ-decisionlog" style="display:inline-flex;align-items:center;gap:8px;margin-top:28px;background:#fff;color:var(--black);padding:13px 26px;border-radius:50px;font-size:14px;font-weight:600;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+            <a href="https://slack.com/oauth_v2/authorize?client_id=10708640313204.10701649677509&scope=channels:history,chat:write,commands,im:write,users:read&redirect_uri=https://api.decisionslog.space" style="display:inline-flex;align-items:center;gap:8px;margin-top:28px;background:#fff;color:var(--black);padding:13px 26px;border-radius:50px;font-size:14px;font-weight:600;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
               Add to Slack — it's free →
             </a>
           </div>
