@@ -756,6 +756,59 @@ export default function HomePage() {
   </div>
 
   <!-- FOOTER -->
+
+  <!-- BLOG PREVIEW -->
+  <section style="padding: 100px 24px; background: var(--white);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <!-- Section Header -->
+      <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 48px;">
+        <div>
+          <h2 style="font-family: 'Fraunces', serif; font-size: 42px; font-weight: 600; color: var(--dark); margin-bottom: 8px;">From the blog</h2>
+          <p style="font-size: 16px; font-weight: 400; color: var(--muted); max-width: 400px;">Learn how teams are building better decision-making practices.</p>
+        </div>
+        <a href="/blog" style="font-size: 15px; font-weight: 500; color: var(--body); text-decoration: none; white-space: nowrap; margin-left: 20px;">View all posts →</a>
+      </div>
+
+      <!-- Blog Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+        <!-- Blog Card 1 -->
+        <a href="/blog/tribal-knowledge" style="text-decoration: none; color: inherit;">
+          <div style="border: 1px solid var(--border); border-radius: 14px; padding: 28px; background: var(--white); transition: all 0.2s ease; cursor: pointer; height: 100%; display: flex; flex-direction: column;" onmouseover="this.style.boxShadow='0 8px 40px rgba(0,0,0,0.07)'" onmouseout="this.style.boxShadow='none'">
+            <div style="margin-bottom: 16px;">
+              <span style="display: inline-block; font-size: 12.5px; font-weight: 500; color: var(--body); background: var(--light); padding: 5px 14px; border-radius: 50px;">Team Culture</span>
+            </div>
+            <h3 style="font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: var(--dark); margin-bottom: 12px; line-height: 1.4;">The Cost of Tribal Knowledge</h3>
+            <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px; flex-grow: 1; line-height: 1.6;">Why dev teams lose $200k/year to decisions that disappear into Slack threads.</p>
+            <div style="font-size: 13px; color: var(--muted);">Mar 26, 2026 · 4 min read</div>
+          </div>
+        </a>
+
+        <!-- Blog Card 2 -->
+        <a href="/blog/decision-culture" style="text-decoration: none; color: inherit;">
+          <div style="border: 1px solid var(--border); border-radius: 14px; padding: 28px; background: var(--white); transition: all 0.2s ease; cursor: pointer; height: 100%; display: flex; flex-direction: column;" onmouseover="this.style.boxShadow='0 8px 40px rgba(0,0,0,0.07)'" onmouseout="this.style.boxShadow='none'">
+            <div style="margin-bottom: 16px;">
+              <span style="display: inline-block; font-size: 12.5px; font-weight: 500; color: var(--body); background: var(--light); padding: 5px 14px; border-radius: 50px;">Best Practices</span>
+            </div>
+            <h3 style="font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: var(--dark); margin-bottom: 12px; line-height: 1.4;">Building a Decision Culture</h3>
+            <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px; flex-grow: 1; line-height: 1.6;">How to shift from "we decided this" to "here's why we decided this."</p>
+            <div style="font-size: 13px; color: var(--muted);">Mar 25, 2026 · 5 min read</div>
+          </div>
+        </a>
+
+        <!-- Blog Card 3 -->
+        <a href="/blog/onboarding-faster" style="text-decoration: none; color: inherit;">
+          <div style="border: 1px solid var(--border); border-radius: 14px; padding: 28px; background: var(--white); transition: all 0.2s ease; cursor: pointer; height: 100%; display: flex; flex-direction: column;" onmouseover="this.style.boxShadow='0 8px 40px rgba(0,0,0,0.07)'" onmouseout="this.style.boxShadow='none'">
+            <div style="margin-bottom: 16px;">
+              <span style="display: inline-block; font-size: 12.5px; font-weight: 500; color: var(--body); background: var(--light); padding: 5px 14px; border-radius: 50px;">Onboarding</span>
+            </div>
+            <h3 style="font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: var(--dark); margin-bottom: 12px; line-height: 1.4;">Onboard 3x Faster</h3>
+            <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px; flex-grow: 1; line-height: 1.6;">Real numbers from teams using decision logs to cut onboarding time by 75%.</p>
+            <div style="font-size: 13px; color: var(--muted);">Mar 24, 2026 · 3 min read</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
   <footer class="site-footer">
     <a href="#" class="logo">decisionlog<sup>↗</sup></a>
     <div class="footer-links">
