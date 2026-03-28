@@ -6,7 +6,7 @@ const blogPosts = [
   {
     slug: 'tribal-knowledge',
     title: 'The Cost of Tribal Knowledge',
-    excerpt: 'Why dev teams lose $200k/year to decisions that disappear into Slack threads. When only the senior engineer knows why you chose async, you pay 20 hours per new hire.',
+    excerpt: "Why dev teams lose $200k/year to decisions that disappear into Slack threads. When only the senior engineer knows why you chose async, you pay 20 hours per new hire.",
     category: 'Team Culture',
     author: 'decisionlog',
     date: 'Mar 26, 2026',
@@ -15,7 +15,7 @@ const blogPosts = [
   {
     slug: 'decision-culture',
     title: 'Building a Decision Culture',
-    excerpt: 'How to shift from "we decided this" to "here's why we decided this." A step-by-step guide for teams that want to make better decisions faster.',
+    excerpt: "How to shift from \"we decided this\" to \"here's why we decided this.\" A step-by-step guide for teams that want to make better decisions faster.",
     category: 'Best Practices',
     author: 'decisionlog',
     date: 'Mar 25, 2026',
@@ -24,7 +24,7 @@ const blogPosts = [
   {
     slug: 'onboarding-faster',
     title: 'Onboard 3x Faster',
-    excerpt: 'Real numbers from teams using decision logs to cut onboarding time by 75%. Your new hire stops asking "why?" and starts shipping in week one.',
+    excerpt: "Real numbers from teams using decision logs to cut onboarding time by 75%. Your new hire stops asking \"why?\" and starts shipping in week one.",
     category: 'Onboarding',
     author: 'decisionlog',
     date: 'Mar 24, 2026',
@@ -33,7 +33,7 @@ const blogPosts = [
   {
     slug: 'rework-costs',
     title: 'The Hidden Cost of Rework',
-    excerpt: 'Teams that don't track decisions re-debate the same choices every quarter. We measured it: this costs 40 hours per team per year.',
+    excerpt: "Teams that don't track decisions re-debate the same choices every quarter. We measured it: this costs 40 hours per team per year.",
     category: 'Engineering',
     author: 'decisionlog',
     date: 'Mar 23, 2026',
@@ -42,7 +42,7 @@ const blogPosts = [
   {
     slug: 'async-decisions',
     title: 'Making Decisions Asynchronously',
-    excerpt: 'Remote teams need async decision-making. But async decisions need async documentation. Here's how to do both.',
+    excerpt: "Remote teams need async decision-making. But async decisions need async documentation. Here's how to do both.",
     category: 'Remote Work',
     author: 'decisionlog',
     date: 'Mar 22, 2026',
@@ -51,7 +51,7 @@ const blogPosts = [
   {
     slug: 'scaling-decisions',
     title: 'Scaling Decision-Making',
-    excerpt: 'When your team grows from 5 to 50 people, decision-making breaks. This is how we fixed it, and how you can too.',
+    excerpt: "When your team grows from 5 to 50 people, decision-making breaks. This is how we fixed it, and how you can too.",
     category: 'Scaling',
     author: 'decisionlog',
     date: 'Mar 21, 2026',

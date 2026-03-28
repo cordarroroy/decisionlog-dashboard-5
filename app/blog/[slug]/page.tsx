@@ -10,7 +10,7 @@ const blogPostsData: Record<string, any> = {
     date: 'Mar 26, 2026',
     readTime: '4 min read',
     category: 'Team Culture',
-    excerpt: 'Why dev teams lose $200k/year to decisions that disappear into Slack threads.',
+    excerpt: "Why dev teams lose $200k/year to decisions that disappear into Slack threads.",
     body: `
       <p>Every senior engineer has experienced it. A new hire asks why you chose async over sync, why you picked PostgreSQL over MongoDB, or why this critical service is written in Go instead of Python. The answer is always the same: "Because we decided that way."</p>
       
@@ -61,7 +61,7 @@ const blogPostsData: Record<string, any> = {
     date: 'Mar 25, 2026',
     readTime: '5 min read',
     category: 'Best Practices',
-    excerpt: 'How to shift from "we decided this" to "here's why we decided this."',
+    excerpt: "How to shift from \"we decided this\" to \"here's why we decided this.\"',
     body: `
       <p>A decision culture is an engineering team that treats decisions like code. Every decision has:</p>
       
