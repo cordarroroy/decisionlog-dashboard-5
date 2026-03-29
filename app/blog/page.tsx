@@ -4,6 +4,15 @@ import type { Metadata } from 'next';
 
 const blogPosts = [
   {
+    slug: 'building-in-public',
+    title: 'How My Last Product Died (And How DecisionLog Was Born)',
+    excerpt: "Failed twice. Lost real money. Learned a ton. Now building something that solves a problem I literally created.",
+    category: 'Founder Story',
+    author: 'Cordarro Gordon',
+    date: 'Mar 29, 2026',
+    readTime: '8 min read',
+  },
+  {
     slug: 'decision-logging-dev-teams',
     title: 'Decision Logging for Dev Teams: How to Stop Losing Knowledge When People Leave',
     excerpt: "When a senior developer leaves, their decisions leave with them. Decision logging captures that knowledge before it walks out the door.",

@@ -111,6 +111,88 @@ const blogPostsData: Record<string, any> = {
       <p>We're running a free beta. If you want to see how decision logging transforms your team, <a href="https://slack.com/oauth/v2/authorize?client_id=10708640313204.10701649677509&scope=users:read,channels:history,chat:write,commands,im:write&redirect_uri=https://api.decisionslog.space/slack/oauth_redirect" style="color: var(--dark); font-weight: 600;">add DecisionLog to your Slack</a> and start logging decisions today.</p>
     `,
   },
+  'building-in-public': {
+    title: 'How My Last Product Died (And How DecisionLog Was Born)',
+    author: 'Cordarro Gordon',
+    date: 'Mar 29, 2026',
+    readTime: '8 min read',
+    category: 'Founder Story',
+    excerpt: 'Failed twice. Lost real money. Learned a ton. Now building something that solves a problem I literally created.',
+    body: `
+      <h2>The Pattern I Kept Missing</h2>
+      
+      <p>Product 1 failed because we didn't know WHY we'd killed certain features. Product 2 failed because we re-debated the same architecture decisions monthly. Product 3 (DecisionLog) is literally fixing products 1 and 2's biggest problem.</p>
+      
+      <h2>Tribal Knowledge Nearly Killed Us</h2>
+      
+      <p>Real example: spent 6 hours re-debating why we chose our current API design. Turns out we'd already decided it was the best option in October. No one remembered because it was in a Slack thread from 6 months ago.</p>
+      
+      <p>Cost: 6 hours × 3 people = 18 engineer hours on a closed question.</p>
+      
+      <p>That's one meeting. Multiply that by the number of teams doing this every week. Now you see why companies bleed productivity.</p>
+      
+      <h2>The Founder Realization</h2>
+      
+      <p>This isn't unique to my failures. Every founder I know has this problem.</p>
+      
+      <p>Teams 10-50 people are the sweet spot of "we're too big for everyone to remember but too small to have formal processes." You're too large to keep everything in one person's head, but you're not big enough to justify a knowledge management department.</p>
+      
+      <p>So decisions get made. Then they get lost. Then they get re-made. Then they get lost again.</p>
+      
+      <p>It's not a process problem. It's not a people problem. It's an information architecture problem.</p>
+      
+      <h2>Building in Public (And Failing in Public)</h2>
+      
+      <p>I started with a wiki. Nobody used it. Tried Notion docs. They got lost in nested folders. Tried one-off documents. They never got updated.</p>
+      
+      <p>Finally tried something radical: what if we logged decisions where they actually happen? In Slack. In the tools we already use.</p>
+      
+      <p>That's when it clicked.</p>
+      
+      <p>We didn't need another system. We didn't need to change behavior. We just needed to capture and retrieve decisions in the moment.</p>
+      
+      <h2>What DecisionLog Actually Is</h2>
+      
+      <p>It's not a process tool. It's not a compliance thing. It's not another app you have to learn.</p>
+      
+      <p>It's: right-click decision → log it → search it forever. 10 seconds. No behavior change required.</p>
+      
+      <p>Your team is already in Slack. Your decisions are already being made in Slack. We just make sure they don't disappear.</p>
+      
+      <h2>The Honest Part (What We're Still Figuring Out)</h2>
+      
+      <p>I could promise you this solves everything. But that's how Product 1 and Product 2 failed — by promising too much.</p>
+      
+      <p>Here's what we're still working on:</p>
+      
+      <ul>
+        <li>How to prevent decisions from becoming outdated (do we flag old decisions? re-validate them?)</li>
+        <li>How to make teams actually use it (not just as a tool, but as a habit)</li>
+        <li>How to scale beyond 50 people (does decision logging work differently at 500?)</li>
+        <li>How to integrate with version control so decisions connect to code changes</li>
+      </ul>
+      
+      <p>These are hard problems. We're not claiming to have them solved. We're claiming to be solving them with real teams in real time.</p>
+      
+      <h2>What's Next</h2>
+      
+      <p>Private beta is starting now. We're looking for 10-15 teams to break this. We want founding member pricing because we genuinely want feedback. Not testimonials. Not nice words. Feedback that helps us get this right.</p>
+      
+      <p>If you're in a 10-50 person team that re-debates the same decisions monthly, this might be for you.</p>
+      
+      <h2>The Real Lesson</h2>
+      
+      <p>Building in public means showing the real journey. No hype. No false promises.</p>
+      
+      <p>I learned from two failures that the best products solve specific problems for specific people. DecisionLog solves one problem: helping teams not forget why they made decisions.</p>
+      
+      <p>It's not revolutionary. It's not AI-powered magic. It's boring, essential infrastructure.</p>
+      
+      <p>And that's exactly what we need.</p>
+      
+      <p>Come break it with us.</p>
+    `,
+  },
   'tribal-knowledge': {
     title: 'The Cost of Tribal Knowledge',
     author: 'decisionlog',
