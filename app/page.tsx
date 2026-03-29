@@ -392,9 +392,10 @@ export default function HomePage() {
       <li><a href="#features">Features</a></li>
       <li><a href="#how">How it works</a></li>
       <li><a href="#teams">Teams</a></li>
+      <li><a href="/dashboard">Dashboard</a></li>
     </ul>
     <div class="nav-right">
-      <a href="/signup" class="nav-signin">Sign up</a>
+      <a href="/login" class="nav-signin">Log in</a>
       <a href="https://slack.com/oauth_v2/authorize?client_id=10708640313204.10701649677509&scope=channels:history,chat:write,commands,im:write,users:read&redirect_uri=https://decisionslog.space" class="nav-cta">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Add to Slack
